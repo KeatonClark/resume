@@ -1,0 +1,33 @@
+name: Build
+
+on:
+  push:
+    branches: ["**"]
+    tags: ["**"]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: wimpysworld/nothing-but-nix@main
+      - uses: DeterminateSystems/nix-installer-action@main
+
+      - name: Build Resume
+        run: nix build .#resume -L
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: resume
+          path: result/resume.pdf
+          retention-days: 7
+
+      - name: Upload to GitHub Release
+        if: github.ref_type == 'tag'
+        uses: softprops/action-gh-release@v3
+        with:
+          files: result/resume.pdf
+          generate_release_notes: true
