@@ -38,7 +38,7 @@ in stdenv.mkDerivation rec {
   doCheck = true;
   checkPhase = ''
     ls -la
-    pages=$(${poppler-utils}/bin/pdfinfo resume.pdf | awk '/^Pages:/ { print $2 }')
+    pages=$(${poppler-utils}/bin/pdfinfo KeatonClarkResume.pdf | awk '/^Pages:/ { print $2 }')
     if [ "$pages" != "1" ]; then
       echo "This resume should only have 1 page, got $pages"
       exit 1

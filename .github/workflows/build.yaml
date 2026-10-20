@@ -3,7 +3,7 @@ name: Build
 on:
   push:
     branches: ["**"]
-    tags: ["**"]
+    tags: ["v*"]
 
 permissions:
   contents: write
@@ -22,12 +22,13 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: resume
-          path: result/resume.pdf
+          path: result/KeatonClarkResume.pdf
           retention-days: 7
 
       - name: Upload to GitHub Release
         if: github.ref_type == 'tag'
         uses: softprops/action-gh-release@v3
         with:
-          files: result/resume.pdf
+          files: result/KeatonClarkResume.pdf
           generate_release_notes: true
+          make_latest: true

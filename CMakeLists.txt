@@ -54,7 +54,7 @@ function(add_typst_document target input_file)
 endfunction()
 
 add_typst_document(resume ${CMAKE_CURRENT_SOURCE_DIR}/src/main.typ 
-    OUTPUT resume.pdf
+    OUTPUT KeatonClarkResume.pdf
     COMPILE_DEFINITIONS
         version=${VERSION}
     INSTALL
