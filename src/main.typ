@@ -4,7 +4,7 @@
   author: (
     firstname: "Keaton",
     lastname: "Clark",
-    email: "root@keatonclark.dev",
+    email: "contact@keatonclark.dev",
     github: "KeatonClark",
     linkedin: "keaton-clark-64a702207",
     address: "Reno, NV",
